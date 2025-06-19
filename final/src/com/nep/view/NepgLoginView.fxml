@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" styleClass="AnchorPane_view" stylesheets="@css/mainview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nep.controller.NepgLoginViewController">
+
+    <children>
+        <!-- 左侧导航栏 -->
+        <VBox prefHeight="1000.0" prefWidth="250.0" styleClass="vbox_view">
+            <children>
+                <ImageView fitHeight="185.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+                <Label prefHeight="80.0" prefWidth="259.0" text="        网格员端">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="choice_view" />
+                    </styleClass>
+                </Label>
+            <Button mnemonicParsing="false" onAction="#back" prefHeight="80.0" prefWidth="264.0" text="返回">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="h6_view" />
+                  <String fx:value="special_botton_view" />
+               </styleClass>
+            </Button>
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+            </children>
+        </VBox>
+
+        <!-- 顶部标题栏 -->
+        <HBox layoutX="259.0" prefHeight="190.0" prefWidth="1241.0">
+            <children>
+                <Label prefHeight="190.0" prefWidth="1002.0" styleClass="h1_view" text="     东软环保公众监督系统" />
+                <ImageView fitHeight="190.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@neusoft.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+
+        <!-- 标题 -->
+        <Label layoutX="750.0" layoutY="230.0" styleClass="h3_view" text="网格员端" />
+
+        <!-- 登录表单 -->
+        <Label layoutX="432.0" layoutY="408.0" styleClass="h4_view" text="登录账号" />
+        <Label layoutX="432.0" layoutY="601.0" styleClass="h4_view" text="登录密码" />
+
+        <!-- 账号输入框 -->
+        <TextField fx:id="txt_id" layoutX="694.0" layoutY="403.0" prefHeight="50.0" prefWidth="500.0" promptText="请输入账号" />
+
+        <!-- 密码输入框 -->
+        <PasswordField fx:id="txt_password" layoutX="700.0" layoutY="596.0" prefHeight="50.0" prefWidth="500.0" promptText="请输入密码" />
+
+        <!-- 登录按钮 -->
+        <Button fx:id="btn_login" layoutX="1255.0" layoutY="809.0" mnemonicParsing="false" onAction="#login" styleClass="button_view" text="登录" />
+    </children>
+</AnchorPane>

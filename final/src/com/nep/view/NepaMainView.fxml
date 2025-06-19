@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.String?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" styleClass="AnchorPane_view" stylesheets="@css/mainview.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nep.controller.NepaMainViewController">
+
+    <children>
+        <!-- 左侧导航栏 -->
+        <VBox prefHeight="1000.0" prefWidth="250.0" styleClass="vbox_view">
+            <children>
+                <ImageView fitHeight="185.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                <Label prefHeight="80.0" prefWidth="259.0" text="             首页">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="choice_view" />
+                    </styleClass>
+                </Label>
+                <Button mnemonicParsing="false" onAction="#openSupervisorLogin" prefHeight="80.0" prefWidth="259.0" text="公众监督员端">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="special_botton_view" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#openGridLogin" prefHeight="80.0" prefWidth="259.0" text="网格员端">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="special_botton_view" />
+                    </styleClass>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#openManagerLogin" prefHeight="80.0" prefWidth="259.0" text="系统管理端">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="special_botton_view" />
+                    </styleClass>
+                </Button>
+            </children>
+        </VBox>
+
+        <!-- 顶部标题栏 -->
+        <HBox layoutX="259.0" prefHeight="190.0" prefWidth="1241.0">
+            <children>
+                <Label prefHeight="190.0" prefWidth="1002.0" styleClass="h1_view" text="     东软环保公众监督系统" />
+                <ImageView fitHeight="190.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@neusoft.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+
+        <!-- 可视化内容区域 -->
+        <AnchorPane layoutX="250.0" layoutY="260.0" prefHeight="810.0" prefWidth="1241.0">
+   <children>
+   
+               <!-- CO柱状图（颜色统一为#ff6b6b） -->
+               <BarChart fx:id="coBarChart" layoutY="304.0" prefHeight="337.0" prefWidth="684.0">
+                   <xAxis>
+                       <CategoryAxis prefHeight="28.0" prefWidth="286.0" side="BOTTOM" />
+                   </xAxis>
+                   <yAxis>
+                       <NumberAxis label="超标次数" side="LEFT" upperBound="500.0" />
+                   </yAxis>
+               </BarChart>
+   
+               <!-- PM2.5柱状图（调整y轴上限为5.0） -->
+               <BarChart fx:id="pm25BarChart" layoutX="651.0" layoutY="335.0" prefHeight="306.0" prefWidth="600.0">
+                   <xAxis>
+                       <CategoryAxis prefHeight="27.0" prefWidth="262.0" side="BOTTOM" />
+                   </xAxis>
+                   <yAxis>
+                       <NumberAxis label="超标次数" side="LEFT" upperBound="60.0" />
+                   </yAxis>
+               </BarChart>
+      
+                  <!-- 饼图和表格 -->
+               <PieChart fx:id="pollutionPieChart" layoutX="741.0" layoutY="-33.0" prefHeight="306.0" prefWidth="389.0" title="污染物超标比例" />
+      
+                  <!-- SO2柱状图 -->
+               <BarChart fx:id="so2BarChart" layoutY="-42.0" prefHeight="324.0" prefWidth="614.0">
+                   <xAxis>
+                       <CategoryAxis prefHeight="20.0" prefWidth="452.0" side="BOTTOM" />
+                   </xAxis>
+                   <yAxis>
+                       <NumberAxis label="超标次数" side="LEFT" upperBound="600.0" />
+                   </yAxis>
+               </BarChart>
+   </children>
+        </AnchorPane>
+         <!-- 图表标题 -->
+         <Label layoutX="288.0" layoutY="-156.0" prefHeight="30.0" prefWidth="260.0" text="二氧化硫(SO2)浓度超标统计" />
+         <Label layoutX="247.0" layoutY="-110.0" prefHeight="30.0" prefWidth="260.0" text="一氧化碳(CO)浓度超标统计" />
+         <Label layoutX="240.0" layoutY="-60.0" prefHeight="30.0" prefWidth="260.0" text="细颗粒物(PM2.5)浓度超标统计" />
+    </children>
+</AnchorPane>
