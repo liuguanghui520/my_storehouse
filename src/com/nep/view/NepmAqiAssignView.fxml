@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="1000.0" prefWidth="1500.0"
+            styleClass="AnchorPane_view"
+            stylesheets="@css/mainview.css"
+            xmlns="http://javafx.com/javafx/8"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.nep.controller.NepmAqiAssignViewController">
+
+    <children>
+        <!-- 左侧导航栏 -->
+        <VBox prefHeight="1000.0" prefWidth="250.0" styleClass="vbox_view">
+            <children>
+                <ImageView fitHeight="185.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+                <Label prefHeight="80.0" prefWidth="259.0" styleClass="h2_view" />
+                <Label prefHeight="80.0" prefWidth="259.0" text="    系统管理端">
+                    <styleClass>
+                        <String fx:value="h2_view" />
+                        <String fx:value="choice_view" />
+                    </styleClass>
+                </Label>
+            </children>
+        </VBox>
+
+        <!-- 顶部标题栏 -->
+        <HBox layoutX="259.0" prefHeight="190.0" prefWidth="1241.0">
+            <children>
+                <Label prefHeight="190.0" prefWidth="1002.0" styleClass="h1_view" text="     东软环保公众监督系统" />
+                <ImageView fitHeight="190.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@neusoft.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+
+        <!-- 页面标题 -->
+        <Label layoutX="582.0" layoutY="209.0" styleClass="h3_view" text="公众监督AQI反馈数据指派" />
+
+        <!-- 查询面板 -->
+        <Pane fx:id="txt_pane1" layoutX="307.0" layoutY="304.0" prefHeight="89.0" prefWidth="1145.0" styleClass="pane_view">
+            <children>
+                <Label layoutX="30.0" layoutY="26.0" styleClass="h4_view" text="请输入AQI反馈数据编号" />
+                <TextField fx:id="txt_afId" layoutX="409.0" layoutY="27.0" prefHeight="36.0" prefWidth="468.0" promptText="请输入数据编号" />
+                <Button fx:id="btn_query" layoutX="942.0" layoutY="21.0"
+                        mnemonicParsing="false" onAction="#queryFeedback" styleClass="button_view" text="查询" />
+            </children>
+        </Pane>
+
+        <!-- 反馈数据详情面板 -->
+        <Pane fx:id="txt_pane2" layoutX="308.0" layoutY="423.0" prefHeight="297.0" prefWidth="1145.0" styleClass="pane_view">
+            <children>
+                <!-- 左侧标签 -->
+                <Label layoutX="56.0" layoutY="31.0" styleClass="h5_view" text="AQI反馈数据编号" />
+                <Label layoutX="54.0" layoutY="86.0" styleClass="h5_view" text="所在省区域" />
+                <Label layoutX="56.0" layoutY="142.0" styleClass="h5_view" text="详细地址" />
+                <Label layoutX="54.0" layoutY="198.0" styleClass="h5_view" text="预估AQI等级" />
+                <Label layoutX="52.0" layoutY="254.0" styleClass="h5_view" text="反馈信息详情" />
+
+                <!-- 右侧标签 -->
+                <Label layoutX="628.0" layoutY="31.0" styleClass="h5_view" text="反馈日期" />
+                <Label layoutX="628.0" layoutY="86.0" styleClass="h5_view" text="所在市区域" />
+                <Label layoutX="628.0" layoutY="198.0" styleClass="h5_view" text="反馈者姓名" />
+
+                <!-- 左侧值标签 -->
+                <Label fx:id="label_afId" layoutX="370.0" layoutY="35.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_proviceName" layoutX="370.0" layoutY="90.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_address" layoutX="370.0" layoutY="146.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_estimateGrade" layoutX="370.0" layoutY="202.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_infomation" layoutX="370.0" layoutY="258.0" styleClass="h5_view" text="Label" />
+
+                <!-- 右侧值标签 -->
+                <Label fx:id="label_date" layoutX="913.0" layoutY="35.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_cityName" layoutX="913.0" layoutY="90.0" styleClass="h5_view" text="Label" />
+                <Label fx:id="label_afName" layoutX="913.0" layoutY="202.0" styleClass="h5_view" text="Label" />
+            </children>
+        </Pane>
+
+        <!-- 指派面板 -->
+        <Pane fx:id="txt_pane3" layoutX="308.0" layoutY="749.0" prefHeight="156.0" prefWidth="1145.0" styleClass="pane_view">
+            <children>
+                <Label layoutX="33.0" layoutY="31.0" styleClass="h4_view" text="公众监督AQI反馈数据任务指派" />
+                <Label layoutX="94.0" layoutY="94.0" styleClass="h5_view" text="请选择您要指派的网格员" />
+                <ComboBox fx:id="combo_realName" layoutX="447.0" layoutY="92.0" prefHeight="36.0" prefWidth="302.0" promptText="请选择网格员" />
+                <Button fx:id="btn_assign" layoutX="850.0" layoutY="86.0"
+                        mnemonicParsing="false" onAction="#assignGridMember" styleClass="button_view" text="立即指派" />
+            </children>
+        </Pane>
+
+
+    </children>
+</AnchorPane>
