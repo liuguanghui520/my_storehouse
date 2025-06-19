@@ -11,11 +11,6 @@ public class Supervisor extends Operator implements Serializable {
 
     public Supervisor() {
     }
-
-    public Supervisor(String sex) {
-        this.sex = sex;
-    }
-
     public void setSex(String sex) {
         this.sex = sex;
     }

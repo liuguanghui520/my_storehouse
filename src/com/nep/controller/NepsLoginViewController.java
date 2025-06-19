@@ -1,14 +1,20 @@
 package com.nep.controller;
 
+import com.nep.NepaMain;
 import com.nep.NepsMain;
 import com.nep.entity.Supervisor;
 import com.nep.service.SupervisorService;
 import com.nep.service.impl.SupervisorServiceImpl;
 import com.nep.util.JavafxUtil;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class NepsLoginViewController {
 
@@ -51,5 +57,22 @@ public class NepsLoginViewController {
         System.out.println("注册功能");
         NepsRegisterViewController.primaryStage=primaryStage;
         JavafxUtil.showStage(NepsMain.class,"view/NepsRegisterView.fxml",primaryStage,"东软环保公众监督员平台——注册功能");
+    }
+
+
+    public void back() {
+        try {
+            // 显示主选择界面
+            NepaMain nepaMain = new NepaMain();
+            nepaMain.showMainSelectView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 显示错误信息
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("加载主选择界面失败");
+            alert.setContentText("无法打开主选择界面：" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 }

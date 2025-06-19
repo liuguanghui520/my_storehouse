@@ -76,4 +76,6 @@ public class JavafxUtil {
     }
 
 
+    public static void hideLoading() {
+    }
 }

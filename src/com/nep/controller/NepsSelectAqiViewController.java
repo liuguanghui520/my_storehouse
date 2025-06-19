@@ -1,5 +1,6 @@
 package com.nep.controller;
 
+import com.nep.NepaMain;
 import com.nep.NepsMain;
 import com.nep.entity.Aqi;
 import com.nep.entity.AqiFeedback;
@@ -20,6 +21,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,12 +75,17 @@ public class NepsSelectAqiViewController implements Initializable {
     // 初始化表格列
     private void initTableColumns() {
         TableColumn<Aqi, String> levelCol = new TableColumn<>("级别");
+        levelCol.setMaxWidth(300);
+        levelCol.setStyle("-fx-alignment: center;");
         levelCol.setCellValueFactory(new PropertyValueFactory<>("level"));
 
         TableColumn<Aqi, String> explainCol = new TableColumn<>("说明");
+        explainCol.setMaxWidth(700);
+        explainCol.setStyle("-fx-alignment: center;");
         explainCol.setCellValueFactory(new PropertyValueFactory<>("explain"));
 
         TableColumn<Aqi, String> impactCol = new TableColumn<>("对健康影响");
+        impactCol.setStyle("-fx-alignment: center;");
         impactCol.setCellValueFactory(new PropertyValueFactory<>("impact"));
 
         txt_tableView.getColumns().addAll(levelCol, explainCol, impactCol);
@@ -231,5 +238,21 @@ public class NepsSelectAqiViewController implements Initializable {
         NepsFeedbackViewController.primaryStage = primaryStage;
         JavafxUtil.showStage(NepsMain.class, "view/NepsFeedbackView.fxml", primaryStage,
                 "东软环保公众监督平台-公众监督员端-AQI反馈数据列表");
+    }
+
+    public void back() {
+        try {
+            // 显示主选择界面
+            NepaMain nepaMain = new NepaMain();
+            nepaMain.showMainSelectView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 显示错误信息
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("加载主选择界面失败");
+            alert.setContentText("无法打开主选择界面：" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 }

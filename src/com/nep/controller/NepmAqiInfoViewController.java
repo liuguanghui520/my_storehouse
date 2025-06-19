@@ -53,6 +53,7 @@ public class NepmAqiInfoViewController implements Initializable {
 
         TableColumn<AqiFeedback, String> infoColumn = new TableColumn<>("反馈信息");
         infoColumn.setMinWidth(210);
+        infoColumn.setStyle("-fx-alignment: center;");
         infoColumn.setCellValueFactory(new PropertyValueFactory<>("information"));
 
         txt_tableView.getColumns().addAll(

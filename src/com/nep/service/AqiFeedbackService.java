@@ -20,4 +20,11 @@ public interface AqiFeedbackService {
 
     // 从数据库查询反馈数据
     List<AqiFeedback> findFeedBackBySupervisor(String supervisorName);
+
+    List<AqiFeedback> readFeedbackFromDatabase();
+
+    /**
+     * 从数据库读取AQI反馈数据
+     */
+
 }

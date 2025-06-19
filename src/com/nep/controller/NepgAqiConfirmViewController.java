@@ -1,6 +1,7 @@
 // com.nep.controller.NepgAqiConfirmViewController.java
 package com.nep.controller;
 
+import com.nep.NepaMain;
 import com.nep.dto.AqiLimitDto;
 import com.nep.entity.AqiFeedback;
 import com.nep.entity.GridMember;
@@ -13,15 +14,16 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -55,8 +57,6 @@ public class NepgAqiConfirmViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // 初始化pane容器样式
-        txt_pane.setStyle("-fx-border-color: #CCC;");
 
         // 初始化网格员姓名
         if (gridMember != null) {
@@ -98,9 +98,11 @@ public class NepgAqiConfirmViewController implements Initializable {
         afNameColumn.setCellValueFactory(new PropertyValueFactory<>("afName"));
 
         TableColumn<AqiFeedback, String> addressColumn = new TableColumn<>("具体地址");
+        addressColumn.setStyle("-fx-alignment: center;");
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
 
         TableColumn<AqiFeedback, String> infoColumn = new TableColumn<>("反馈信息");
+        infoColumn.setStyle("-fx-alignment: center;");
         infoColumn.setCellValueFactory(new PropertyValueFactory<>("information"));
 
         txt_tableView.getColumns().addAll(afIdColumn, afNameColumn, dateColumn, estimateGradeColumn,
@@ -282,5 +284,21 @@ public class NepgAqiConfirmViewController implements Initializable {
         so2level = 0;
         colevel = 0;
         pmlevel = 0;
+    }
+
+    public void back() {
+        try {
+            // 显示主选择界面
+            NepaMain nepaMain = new NepaMain();
+            nepaMain.showMainSelectView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 显示错误信息
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("加载主选择界面失败");
+            alert.setContentText("无法打开主选择界面：" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 }

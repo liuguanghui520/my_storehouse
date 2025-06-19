@@ -10,9 +10,9 @@ import java.io.InputStreamReader;
 import java.sql.*;
 
 public class DatabaseUtil {
-    private static final String URL = "jdbc:mysql://localhost:3306/practical_training";
+    private static final String URL = "jdbc:mysql://localhost:3306/demo";
     private static final String USER = "root";
-    private static final String PASSWORD = "LRZS*fcj20060720";
+    private static final String PASSWORD = "123456";
 
     public static Connection getConnection() throws SQLException {
         try {

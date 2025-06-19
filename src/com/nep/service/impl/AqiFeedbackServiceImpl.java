@@ -1,12 +1,13 @@
 package com.nep.service.impl;
+
 import MySQL_Link.DatabaseUtil;
 import com.nep.entity.AqiFeedback;
 import com.nep.service.AqiFeedbackService;
 import com.nep.util.JavafxUtil;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class AqiFeedbackServiceImpl implements AqiFeedbackService {
     @Override
@@ -123,6 +124,7 @@ public class AqiFeedbackServiceImpl implements AqiFeedbackService {
         }
         return feedbackList;
     }
+
     // 新增私有方法：从数据库查询所有反馈（不暴露给接口）
     public List<AqiFeedback> getAllFeedbacksFromDB() {
         List<AqiFeedback> list = new ArrayList<>();
@@ -158,4 +160,57 @@ public class AqiFeedbackServiceImpl implements AqiFeedbackService {
         return list;
     }
 
+    /**
+     * 从数据库读取AQI反馈数据
+     */
+    @Override
+    public List<AqiFeedback> readFeedbackFromDatabase() {
+        List<AqiFeedback> feedbackList = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DatabaseUtil.getConnection();
+            String sql = "SELECT * FROM aqi_feedback";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                AqiFeedback feedback = new AqiFeedback();
+
+                // 修正字段映射和类型转换
+                feedback.setAfId(rs.getInt("af_id"));
+                feedback.setAfName(rs.getString("af_name")); // 修正字段名大小写
+                feedback.setProvinceName(rs.getString("province_name"));
+                feedback.setCityName(rs.getString("city_name"));
+                feedback.setAddress(rs.getString("address"));
+                feedback.setInformation(rs.getString("information"));
+                feedback.setEstimateGrade(rs.getString("estimate_grade"));
+                feedback.setDate(rs.getString("date"));
+                feedback.setState(rs.getString("state"));
+                feedback.setGmName(rs.getString("gm_name"));
+                feedback.setConfirmDate(rs.getString("confirm_date"));
+                feedback.setSo2(rs.getDouble("so2"));
+                feedback.setCo(rs.getDouble("co"));
+                feedback.setPm(rs.getDouble("pm"));
+                feedback.setConfirmLevel(rs.getString("confirm_level"));
+                feedback.setConfirmExplain(rs.getString("confirm_explain"));
+
+                feedbackList.add(feedback);
+
+                // 添加调试输出
+                System.out.println("读取反馈: ID=" + feedback.getAfId() + ", 名称=" + feedback.getAfName());
+            }
+
+            System.out.println("共读取 " + feedbackList.size() + " 条反馈数据");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DatabaseUtil.close(conn, stmt, rs);
+        }
+
+        return feedbackList;
+    }
 }

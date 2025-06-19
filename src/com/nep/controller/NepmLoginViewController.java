@@ -1,5 +1,6 @@
 package com.nep.controller;
 
+import com.nep.NepaMain;
 import com.nep.NepmMain;
 import com.nep.service.AdminService;
 import com.nep.service.impl.AdminServiceImpl;
@@ -8,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class NepmLoginViewController {
     @FXML
@@ -53,6 +56,22 @@ public class NepmLoginViewController {
             JavafxUtil.showStage(NepmMain.class, "view/NepmMainView.fxml", primaryStage, "东软环保公众监督平台-管理端-主功能界面");
         } else {
             JavafxUtil.showAlert(primaryStage, "登录失败", "用户名或密码错误", "请重新输入", "warn");
+        }
+    }
+
+    public void back() {
+        try {
+            // 显示主选择界面
+            NepaMain nepaMain = new NepaMain();
+            nepaMain.showMainSelectView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 显示错误信息
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("加载主选择界面失败");
+            alert.setContentText("无法打开主选择界面：" + e.getMessage());
+            alert.showAndWait();
         }
     }
 }

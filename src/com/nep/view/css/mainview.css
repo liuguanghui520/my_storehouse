@@ -1,0 +1,122 @@
+
+/*界面框架*/
+
+
+/*底色框架*/
+.AnchorPane_view {
+    -fx-background-color: linear-gradient( #fffafa, white);
+}
+
+/*左边框架*/
+.vbox_view {
+    -fx-background-color: linear-gradient( #98fb98, white);
+}
+
+/*子界面框架 */
+.pane_view {
+    -fx-background-color: linear-gradient( #fffafa, white);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 2, 2);
+}
+
+/*标签字体样式*/
+.h1_view {
+    -fx-font-size: 70px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0.5, 2, 2);
+}
+
+.h2_view {
+    -fx-font-size: 25px;
+    -fx-font-weight: 700;
+    -fx-text-fill: grey;
+}
+
+.h3_view {
+    -fx-font-size: 50px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+.h4_view {
+    -fx-font-size: 30px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+.h5_view {
+    -fx-font-size: 24px;
+}
+
+.h6_view {
+    -fx-text-fill: grey;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+.h7_view {
+    -fx-text-fill: grey;
+    -fx-font-size: 20px;
+    -fx-font-weight: 700;
+}
+
+
+.choice_view {
+    -fx-background-color: lightgreen;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+/*按钮样式*/
+
+/*界面内按钮*/
+.button_view {
+    -fx-font-size: 28px;
+    -fx-background-color:  linear-gradient( #98fb98, white);
+    -fx-background-radius: 20;
+
+    -fx-font-weight: 700;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+/*放置*/
+.button_view:hover {
+    -fx-font-size: 28px;
+    -fx-background-color: linear-gradient( gray, white);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+/*点击*/
+.button_view:pressed {
+    -fx-font-size: 29px;
+    -fx-background-color: #98fb98;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+/*左侧边框按钮*/
+.special_botton_view {
+    -fx-background-color: transparent;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+/*放置*/
+.special_botton_view:hover {
+    -fx-background-color: linear-gradient( #98fb98, white);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+/*点击*/
+.special_botton_view:pressed {
+    -fx-font-size: 19fx;
+    -fx-background-color: #98fb98;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 2, 2);
+}
+
+
+/*特殊用途*/
+
+/*加粗*/
+.special_bold {
+    -fx-font-weight: 700;
+}
+/*加阴影*/
+.shadow_view {
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0.5, 2, 2);
+}
+

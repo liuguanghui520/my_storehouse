@@ -1,5 +1,6 @@
 package com.nep.controller;
 
+import com.nep.NepaMain;
 import com.nep.NepgMain;
 import com.nep.entity.GridMember;
 import com.nep.service.GridMemberService;
@@ -8,6 +9,8 @@ import com.nep.util.JavafxUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class NepgLoginViewController {
     @FXML
@@ -51,6 +54,22 @@ public class NepgLoginViewController {
             JavafxUtil.showAlert(primaryStage, "登录失败", "登录账号和密码错误","请重新输入账号和密码","warn");
         }
 
+    }
+
+    public void back() {
+        try {
+            // 显示主选择界面
+            NepaMain nepaMain = new NepaMain();
+            nepaMain.showMainSelectView();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // 显示错误信息
+            javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.ERROR);
+            alert.setTitle("错误");
+            alert.setHeaderText("加载主选择界面失败");
+            alert.setContentText("无法打开主选择界面：" + e.getMessage());
+            alert.showAndWait();
+        }
     }
 
 }
