@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nep.controller.NepsLoginViewController">
+   <children>
+      <AnchorPane layoutX="-19.0" layoutY="-27.0" prefHeight="450.0" prefWidth="625.0">
+         <children>
+            <Button layoutX="480.0" layoutY="359.0" mnemonicParsing="false" onAction="#login" prefHeight="36.0" prefWidth="72.0" text="登录" />
+            <Label layoutX="164.0" layoutY="46.0" text="环保公众监督员平台">
+               <font>
+                  <Font name="System Bold" size="37.0" />
+               </font>
+            </Label>
+            <Label layoutX="268.0" layoutY="120.0" text="公众监督员平台">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font></Label>
+            <AnchorPane layoutX="551.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" />
+            <Label layoutX="131.0" layoutY="204.0" text="登陆账号" />
+            <Label layoutX="131.0" layoutY="281.0" text="登陆密码" />
+            <TextField fx:id="txt_id" layoutX="253.0" layoutY="198.0" prefHeight="36.0" prefWidth="257.0" />
+            <PasswordField fx:id="txt_password" layoutX="253.0" layoutY="275.0" prefHeight="36.0" prefWidth="257.0" />
+            <Button layoutX="173.0" layoutY="359.0" mnemonicParsing="false" onAction="#register" prefHeight="36.0" prefWidth="72.0" text="注册" />
+            <Box layoutX="56.0" layoutY="70.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
